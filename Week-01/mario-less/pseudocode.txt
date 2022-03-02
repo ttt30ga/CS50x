@@ -1,6 +1,0 @@
-Ask user for the height value
-Accept only positive inputs from 1 to 8
-If value is not accepted, ask again
-Else
-  Print Stored value
-  Loop through accepted value printing hashes and spaces
