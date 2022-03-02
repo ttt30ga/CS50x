@@ -1,0 +1,11 @@
+sort1 uses: Bubble Sort
+
+How do you know?: The program perform slow with large data sets compared sort2 and sort3
+
+sort2 uses: Merge Sort
+
+How do you know?: It's the fastest performing program by sorting random50000.txt in 0.4s
+
+sort3 uses: Selection Sort
+
+How do you know?: Consistently with large data set slow even with sorted.txt

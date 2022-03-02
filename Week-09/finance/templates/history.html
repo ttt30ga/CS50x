@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+    <section>
+        <h1 class="username">History</h1>
+    </section>
+    <section>
+        <table class="table align-left">
+            <thead class="table-secondary">
+                <tr>
+                    <th scope="col">Transaction</th>
+                    <th scope="col">Symbol</th>
+                    <th scope="col">Name</th>
+                    <th class="align-right" scope="col">Shares</th>
+                    <th class="align-right" scope="col">Time Price</th>
+                    <th class="align-right" scope="col">Time Value</th>
+                    <th class="align-right" scope="col">Timestamp</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for transaction in transactions %}
+                    <tr>
+                        <td class="align-left">{{ transaction.t_type }}</td>
+                        <td class="align-left">{{ transaction.symbol }}</td>
+                        <td class="align-left">{{ transaction.name }}</td>
+                        <td class="align-right">{{ transaction.shares }}</td>
+                        <td class="align-right">{{ transaction.t_price | usd }}</td>
+                        <td class="align-right">{{ transaction.t_value | usd }}</td>
+                        <td class="align-right">{{ transaction.t_date}}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+    {% block javascript %}
+        <script>
+            sessionStorage.clear();
+        </script>
+    {% endblock %}
+{% endblock %}

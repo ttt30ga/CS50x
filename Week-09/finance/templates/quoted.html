@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quoted
+{% endblock %}
+
+{% block main %}
+    <h1 class="stock_symbol">{{ stock.symbol }}</h1>
+    <h1 class="stock_name">{{ stock.name }}</h1>
+    <h1 class="stock_price">{{ stock.price | usd }}</h1>
+    {% block javascript %}
+        <script>
+            sessionStorage.clear();
+        </script>
+    {% endblock %}
+{% endblock %}

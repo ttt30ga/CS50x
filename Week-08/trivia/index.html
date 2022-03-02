@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <script>
+            // TODO: Add code to check answers to questions
+            window.addEventListener("load", function(){
+                document.querySelector("input").value = "";
+
+                // Part 1 - Correct function
+                let correct = document.querySelector(".correct");
+                correct.addEventListener("click", function() {
+                    correct.style.backgroundColor = "#60bf00";
+                    correct.style.color = "#FFFFFF";
+                    let feedback = document.querySelector(".feedbackPart1")
+                    feedback.textContent = "Correct!";
+                });
+
+                // Part 1 - Incorrect function
+                let incorrect = document.querySelectorAll(".incorrect");
+                for (let i = 0; i < incorrect.length; i++) {
+                    incorrect[i].addEventListener("click", function() {
+                        incorrect[i].style.backgroundColor = "#ff3460";
+                        incorrect[i].style.color = "#FFFFFF";
+                        let feedback = document.querySelector(".feedbackPart1")
+                        feedback.textContent = "Incorrect!";
+                    });
+                }
+
+                // Part 2 - Open answer function
+                document.querySelector(".submit").addEventListener("click", function() {
+                    let input = document.querySelector("input");
+                    if (input.value == "Spain") {
+                        input.style.backgroundColor = "#60bf00";
+                        input.style.color = "#FFFFFF";
+                        let feedback = document.querySelector(".feedbackPart2")
+                        feedback.textContent = "Correct!";
+                    } else {
+                        input.addEventListener("click", function() {
+                        input.style.backgroundColor = "#ff3460";
+                        input.style.color = "#FFFFFF";
+                        let feedback = document.querySelector(".feedbackPart2")
+                        feedback.textContent = "Incorrect!";
+                        });
+                    }
+                })
+            })
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <h3>When was the Tamagotchi digital pet released? </h3>
+                <!-- TODO: Add multiple choice question here -->
+                <button class="incorrect" value="1972">1972</button>
+                <button class="incorrect" value="1987">1987</button>
+                <button class="correct" value="1996">1996</button>
+                <button class="incorrect" value="2007">2007</button>
+                <button class="incorrect" value="2012">2012</button>
+                <p>Result: <span class="feedbackPart1"></span></p>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <h3>Which country invented Gazpacho? </h3>
+                <!-- TODO: Add free response question here -->
+                <input type="text">
+                <button class="submit">Check Answer</button>
+                <p>Result: <span class="feedbackPart2"></span></p>
+            </div>
+        </div>
+    </body>
+</html>

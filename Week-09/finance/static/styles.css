@@ -1,0 +1,71 @@
+/* Size for brand */
+nav .navbar-brand
+{
+    font-size: xx-large;
+}
+
+/* Colors for brand */
+nav .navbar-brand .blue
+{
+    color: #537fbe;
+}
+nav .navbar-brand .red
+{
+    color: #ea433b;
+}
+nav .navbar-brand .yellow
+{
+    color: #f5b82e;
+}
+nav .navbar-brand .green
+{
+    color: #2e944b;
+}
+
+section {
+    margin-bottom: 5em;
+}
+
+table {
+    margin: auto;
+    max-width: 1200px;
+}
+
+.align-left {
+    text-align: left;
+}
+
+.align-right {
+    text-align: right;
+}
+
+.align-center {
+    text-align: center;
+}
+
+.stock_price, .username {
+    font-size: 6em;
+    font-weight: 900;
+}
+
+.stock_symbol {
+    font-size: 4em;
+    color: darkgrey;
+    font-weight: 700
+}
+
+.stock_name {
+    font-size: 2em;
+    color: lightgrey;
+    font-weight: 400
+}
+
+.stock_price {
+    margin-top: 0.5em;
+}
+
+.usercash {
+    font-size: 2em;
+    color: darkgrey;
+    font-weight: 700
+}

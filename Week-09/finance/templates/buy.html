@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Buy
+{% endblock %}
+
+{% block main %}
+    <section>
+        <h1 class="username">Buy</h1>
+    </section>
+    <form action="/buy" method="post">
+        <div class="mb-3">
+            <input autocomplete="off" class="form-control mx-auto w-auto" id="symbol" name="symbol" placeholder="Symbol" type="text" autofocus>
+        </div>
+        <div class="mb-3">
+            <input autocomplete="off" class="form-control mx-auto w-auto" id="shares" name="shares" placeholder="Quantity" type="text">
+        </div>
+        <button class="btn btn-primary" type="submit">Buy</button>
+    </form>
+    {% block javascript %}
+        <script>
+            let symbol_value = sessionStorage.getItem("symbol_value");
+            document.getElementById("symbol").value = symbol_value;
+        </script>
+    {% endblock %}
+{% endblock %}

@@ -1,0 +1,88 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+    <section>
+        <h1 class="username">Hello {{ user.username }}</h1>
+    </section>
+    {% if not portfolio %}
+        <section>
+            <h2 class="stock_name">You havent made any transactions yet</h2>
+            <a class="btn btn-primary" style="margin-top: 2em" href="{{ url_for('buy') }}">Start buying</a>
+        </section>
+    {% else %}
+        <section>
+            <table class="table align-left">
+                <thead class="table-dark">
+                    <tr>
+                        <th class="align-center" scope="col">Cash</th>
+                        <th class="align-center" scope="col">Invested</th>
+                        <th class="align-center" scope="col">Balance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="usercash align-center">{{ user.cash | usd }}</td>
+                        <td class="usercash align-center">{{ invested | usd }}</td>
+                        <td class="usercash align-center">{{ balance | usd }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section>
+            <table class="table align-left">
+                <thead class="table-secondary">
+                    <tr>
+                        <th scope="col">Symbol</th>
+                        <th scope="col">Name</th>
+                        <th class="align-right" scope="col">Shares</th>
+                        <th class="align-right" scope="col">Current Price</th>
+                        <th class="align-right" scope="col">Current Value</th>
+                        <th class="align-right" scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for stock in portfolio %}
+                        <tr>
+                            <td class="align-left align-middle">{{ stock.symbol }}</td>
+                            <td class="align-left align-middle">{{ stock.name }}</td>
+                            <td class="align-right align-middle">{{ stock.shares }}</td>
+                            <td class="align-right align-middle">{{ stock.price | usd }}</td>
+                            <td class="align-right align-middle">{{ stock.value | usd }}</td>
+                            <td class="align-right align-middle">
+                                <button class="btn btn-primary" id="action" tip="buy" value="{{ stock.symbol }}" type="submit" onclick="sendVal(this)">Buy</button>
+                                <button class="btn btn-primary" id="action" tip="sell" value="{{ stock.symbol }}" type="submit" onclick="sendVal(this)">Sell</button>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+        {% block javascript %}
+            <script>
+
+                // Send stock symbol value to buy/sell page
+                function sendVal(button) {
+                    let tip = button.getAttribute("tip");
+                    let val = document.getElementById("action").value;
+                    sessionStorage.setItem("symbol_value", val.toLowerCase());
+                    location.href = tip;
+                }
+
+                // Clear session storage if index page refresh
+                window.onbeforeunload = function(){
+                    sessionStorage.setItem("origin", window.location.href);
+                }
+
+                window.onload = function(){
+                    if(window.location.href == sessionStorage.getItem("origin")){
+                        sessionStorage.clear();
+                    }
+                }
+            </script>
+        {% endblock %}
+    {% endif %}
+{% endblock %}

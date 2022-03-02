@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quote
+{% endblock %}
+
+{% block main %}
+    <section>
+        <h1 class="username">Quote</h1>
+    </section>
+    <form action="/quote" method="post">
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="symbol" name="symbol" placeholder="Symbol" type="text">
+        </div>
+        <button class="btn btn-primary" type="submit">Get quote</button>
+    </form>
+    {% block javascript %}
+        <script>
+            sessionStorage.clear();
+        </script>
+    {% endblock %}
+{% endblock %}
