@@ -4,7 +4,7 @@ This repo includes all notes and codes from 2022 HarvardX CS50x - `CS50's Introd
 
 | Week   | Topic           | Notes & Assignments |
 | ------ | --------------- | ------------------- |
-| Week 0 | Scratch         | -                   |
+| Week 0 | Scratch         | [Link](./Week-00/)  |
 | Week 1 | C               | [Link](./Week-01/)  |
 | Week 2 | Arrays          | [Link](./Week-02/)  |
 | Week 3 | Algorithms      | [Link](./Week-03/)  |
